@@ -1,19 +1,19 @@
 var Queue = function(){
-  var someInstance = {};
-
-  // Use an object with numeric keys to store values
-  var storage = {};
-
-  // Implement the methods below
-
-  someInstance.enqueue = function(value){
+  var queue = {};
+  var storage = [];
+  
+  queue.enqueue = function(val){
+    storage.unshift(val);
+    return storage.length;
   };
 
-  someInstance.dequeue = function(){
+  queue.dequeue = function(){
+    return storage.pop();
   };
 
-  someInstance.size = function(){
+  queue.size = function(){
+    return storage.length;
   };
 
-  return someInstance;
+  return queue;
 };
