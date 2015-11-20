@@ -4,18 +4,15 @@ var Tree = function(value){
 
   // your code here
   newTree.children = [];  // fix me
-
+  newTree.parent = undefined;
   return newTree;
 };
-
-
-
-
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
   var child = Tree(value);
+  child.parent = this;
   this.children.push(child);
 
 };
@@ -33,6 +30,14 @@ treeMethods.contains = function(target){
   return false;
 };
 
+treeMethods.removeFromParent = function() {
+  for (var i = 0; i < this.parent.children.length; i++) {
+    if (this.parent.children[i] === this) {
+      this.parent.children.splice(i, 1);
+    }
+  }
+
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
