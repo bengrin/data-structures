@@ -61,4 +61,14 @@ describe('tree', function() {
     expect(tree.children[0].children[0]).to.equal(undefined);
   });
 
+  it('should execute a callback on every value in a tree using "traverse"', function(){
+    var array = [];
+    var func = function(value){ array.push(value); };
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.traverse(func);
+    console.log(array);
+    expect(array).to.eql([undefined,2,3]);
+  });
+
 });
