@@ -7,11 +7,12 @@ var Set = function(){
 var setPrototype = {};
 
 setPrototype.add = function(item){
-  this._storage[item] = item;
+  //check type
+  this._storage[JSON.stringify(item)] = JSON.stringify(item);
 };
 
 setPrototype.contains = function(item){
-  if (this._storage[item] === item)  {
+  if (this._storage[JSON.stringify(item)] === JSON.stringify(item))  {
     return true;
   } else {
     return false;
@@ -19,8 +20,9 @@ setPrototype.contains = function(item){
 };
 
 setPrototype.remove = function(item){
-  delete this._storage[item];
+  delete this._storage[JSON.stringify(item)];
 };
+
 
 /*
  * Complexity: What is the time complexity of the above functions?

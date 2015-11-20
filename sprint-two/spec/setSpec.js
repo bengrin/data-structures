@@ -24,4 +24,53 @@ describe('set', function() {
     expect(set.contains("Mel Gibson")).to.equal(false);
   });
 
+  it('should add numbers to a set', function(){
+    set.add(3);
+    set.add(4);
+    expect(set.contains(3)).to.equal(true);
+    expect(set.contains(4)).to.equal(true);
+  });
+
+  it('should remove numbers from a set', function(){
+    set.add(3);
+    set.remove(3);
+    expect(set.contains(3)).to.equal(false);
+  });
+
+  it('should differentiate between string numbers and real numbers', function(){
+    set.add('3');
+    expect(set.contains(3)).to.equal(false);
+  });
+
+  it('should not overwrite a string number with a real number', function(){
+    set.add('3');
+    set.add(3);
+    expect(set.contains('3')).to.equal(true);
+  });
+
+  it('should add arrays to a set', function(){
+    set.add([3]);
+    set.add([4]);
+    expect(set.contains([3])).to.equal(true);
+    expect(set.contains([4])).to.equal(true);
+  });
+
+  it('should remove arrays from a set', function(){
+    set.add([3]);
+    set.remove([3]);
+    expect(set.contains([3])).to.equal(false);
+  });
+  it('should add object to a set', function(){
+    set.add({a:3});
+    set.add({b:4});
+    expect(set.contains({a:3})).to.equal(true);
+    expect(set.contains({b:4})).to.equal(true);
+  });
+
+  it('should remove numbers from a set', function(){
+    set.add({b:4});
+    set.remove({b:4});
+    expect(set.contains({b:4})).to.equal(false);
+  });
+
 });

@@ -51,5 +51,8 @@ BinarySearchTreeMethods = {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * insert - Logarithmic
+ * contains - Logarithmic
+ * depthFirstLog - Linear
  */
  
