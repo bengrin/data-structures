@@ -52,4 +52,24 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should know the last node\'s value', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.tail.prev.value).to.equal(4);
+  });
+
+  it('should designate a new head when new nodes are added to the front', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToHead(2);
+    expect(linkedList.head.value).to.equal(2);
+  });
+
+  it('should remove tail from the list when removeTail', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeTail();
+    expect(linkedList.tail.value).to.equal(4);
+  });
+
 });
