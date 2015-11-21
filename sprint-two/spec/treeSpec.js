@@ -67,7 +67,6 @@ describe('tree', function() {
     tree.addChild(2);
     tree.addChild(3);
     tree.traverse(func);
-    console.log(array);
     expect(array).to.eql([undefined,2,3]);
   });
 

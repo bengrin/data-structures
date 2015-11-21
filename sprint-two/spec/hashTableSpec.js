@@ -56,6 +56,16 @@ describe('hashTable', function() {
     });
     expect(hashTable._limit).to.equal(16);
   });
+  
+  it('should still contain all the added items', function() {
+    _.each(people, function(person) {
+      var firstName = person[0], lastName = person[1];
+      hashTable.insert(firstName,lastName);
+    });
+    expect(hashTable.retrieve('John')).to.equal('Resig');
+    expect(hashTable.retrieve('Brendan')).to.equal('Eich');
+    expect(hashTable.retrieve('Alan')).to.equal('Turing');
+  });
 
   it('should halve in size when needed', function() {
     _.each(people, function(person) {
@@ -70,4 +80,5 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
 });

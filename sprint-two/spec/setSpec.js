@@ -67,7 +67,7 @@ describe('set', function() {
     expect(set.contains({b:4})).to.equal(true);
   });
 
-  it('should remove numbers from a set', function(){
+  it('should remove objects from a set', function(){
     set.add({b:4});
     set.remove({b:4});
     expect(set.contains({b:4})).to.equal(false);
