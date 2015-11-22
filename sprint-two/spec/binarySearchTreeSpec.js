@@ -5,7 +5,7 @@ describe('binarySearchTree', function() {
     binarySearchTree = BinarySearchTree(5);
   });
 
-  it('should have methods named "insert", "contains", and "depthFirstLog', function() {
+ it('should have methods named "insert", "contains", and "depthFirstLog', function() {
     expect(binarySearchTree.insert).to.be.a("function");
     expect(binarySearchTree.contains).to.be.a("function");
     expect(binarySearchTree.depthFirstLog).to.be.a("function");
@@ -36,4 +36,32 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5,2,3]);
   });
+
+  it('should rebalance the tree', function() {
+    var array = [1, 2, 3, 4, 5, 6, 7];
+    _.each(array, function(value) {
+      binarySearchTree.insert(value);
+    });
+    binarySearchTree = binarySearchTree.rebalance();
+    expect(binarySearchTree.value).to.equal(4);
+    expect(binarySearchTree.left.value).to.equal(2);
+    expect(binarySearchTree.right.value).to.equal(6);
+    expect(binarySearchTree.left.left.value).to.equal(1);
+    expect(binarySearchTree.left.right.value).to.equal(3);
+    expect(binarySearchTree.right.right.value).to.equal(7);
+    expect(binarySearchTree.right.left.value).to.equal(5);
+  });
+
+  it('should keep track of its depth', function() {
+    var array = [7, 6, 8, 9, 3, 2, 1];
+    _.each(array, function(value) {
+      binarySearchTree.insert(value);
+    });
+    //expect(binarySearchTree.left.value).to.equal(3);
+    //expect(binarySearchTree.right.value).to.equal(6);
+    //expect(binarySearchTree.right.right.value).to.equal(7);
+    //expect(binarySearchTree.right.right.right.value).to.equal(8);
+    //console.log(binarySearchTree.maxDepth(binarySearchTree, 0));
+  });
+
 });
